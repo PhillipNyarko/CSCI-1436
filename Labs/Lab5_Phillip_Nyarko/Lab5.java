@@ -20,7 +20,7 @@ public class Lab5 { // main class
             boolean isValid = edge1 + edge2 > edge3 && edge1 + edge3 > edge2 && edge2 + edge3 > edge1;
             
             if (isValid){ // if the boolean evaluates to true, add all the sides to get the perimeter and print the result
-                    System.out.printf("The perimeter of the triangle is %f", (edge1 + edge2 + edge3)); // print with string formatting
+                    System.out.printf("The perimeter of the triangle is %f ", (edge1 + edge2 + edge3)); // print with string formatting
             }else{ // if the boolean evaluates to false print "Input is invalid."
                     System.out.println("Input is invalid."); // print that the input is invalid
             }
