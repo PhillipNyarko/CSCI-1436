@@ -21,6 +21,7 @@ class Lab5 {
 			System.out.println("Input is invalid.");
 		}
 		input.close();			
+		System.out.println("Hello World");
 	}
 }
 
