@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class InClassExercises {
 	public static void main(String args[]) {
-		rightTriangleStars();
+		switchStatement();
 	}
 	
 	public static void simpleIfDemo() {
@@ -53,13 +53,16 @@ public class InClassExercises {
 		input.close();
 	}
 	
-	public static int switchStatement(int number){
-		switch (day){				
+	public static void switchStatement(){
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter a number from 1-7 representing a day of the week");
+		int number = input.nextInt();
+		switch (number){				
 			case 1:
 				System.out.println("Monday");
 				break;
 			case 2:
-			       	System.out.println("Tueday");
+			       	System.out.println("Tuesday");
 				break;
 			case 3:
 			       	System.out.println("Wednesday");
@@ -76,6 +79,7 @@ public class InClassExercises {
 			case 7: System.out.println("Sunday");
 				break;
 			default:
-				System.out.println("Please enter a valid number from 1-7")
-	{
+				System.out.println("Please enter a valid number from 1-7");
+		}
+	}
 }
