@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class InClassExercises {
 	public static void main(String args[]) {
-		switchStatement();
+		generateRandomLetter();
 	}
 	
 	public static void simpleIfDemo() {
@@ -82,4 +82,16 @@ public class InClassExercises {
 				System.out.println("Please enter a valid number from 1-7");
 		}
 	}
+	
+	public static int computeAnglesOfTriangle(int a, int b,  int c){
+		int aVal = Math.acos(((a*a)-(b*b)-(c*c)))/(-2*b*c); 
+		return aVal;
+	}
+	
+	public static char generateRandomLetter(){
+		int asciiCode = 65 + (int)(Math.random()*26);
+		char letter = acsiiCode;
+		return letter;
+	}
+
 }
