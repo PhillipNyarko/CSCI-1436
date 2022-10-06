@@ -25,10 +25,9 @@ public class Lab2 {
 			currentValue = (currentValue + monthlyDeposit) * MONTHLY_INTEREST_RATE;
 			if(i != 4 && i != 5) {// only print if the index of the loop is not on the months 4 and 5
 			// create string for output using string formatting to insert the month and account values
-			String output = String.format("After the %d month, the account value is %f", i, currentValue); //"%d" = decimal, "%f" floating point
-			System.out.println(output); // print the output to the console
-			input.close(); // close the input scanner to avoid "resource leak" warning"
+			System.out.printf("Month: %d\n Balance %.2f\n", i, currentValue); // print the output to the console
 			}
 		}
+		input.close(); // close the input scanner to avoid "resource leak" warning"
 	}
 }
