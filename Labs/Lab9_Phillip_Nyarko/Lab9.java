@@ -20,7 +20,7 @@ class Lab9{ // main class
 			 * decreases with each new row, the number of stars increases which results in a right-justified
 			 * right triangle*/
 			for(int k = 0; k <= i; k++){ 
-				System.out.print(" *"); // print the star with a space infront of it
+				System.out.print("* "); // print the star with a space after  it
 			}
 			System.out.println(); // a new line is create with each iteration of the main loop(this occurs six times)
 		}	
