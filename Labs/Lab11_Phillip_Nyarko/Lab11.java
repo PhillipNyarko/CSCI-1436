@@ -84,7 +84,7 @@ class Lab10{
     }else if (grade >= 6){ // if grade > or = 6, the user gets a D
       return 'D';
     }else{ // if grade is lower than a 6, the user gets a F
-      return 'F';
+      return 'E';
     }
   }
 }
