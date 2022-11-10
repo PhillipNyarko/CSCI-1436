@@ -20,8 +20,9 @@ class Lab12{
     // ask the user for input three times. Append the user input to the array that corresponds with the data type.
     for(int i = 0; i < 3; i++){
       System.out.printf("Enter %s #%d: ", dataType, i+1);
+      // "parse[DataType]" method used to convert string input to correct data type 
       if("int".equals(dataType)){
-        userIntValues[i] = Integer.parseInt(input.next());      
+        userIntValues[i] = Integer.parseInt(input.next());     
       }else if("float".equals(dataType)){
         userFloatValues[i] = Double.parseDouble(input.next());
       }else if("string".equals(dataType)){
@@ -45,8 +46,8 @@ class Lab12{
 
   // create a soritng method called "sortThree" and accept an iteger array as the only parameter
   // i elected to use bubble sort which swaps each pair of consecutive numbers until the array is sorted
-  // although it is not effiecient(n^2), the data size is small enough for this sorting algorithim
-  // (its also the only sorting algorithm I have experience with
+  // although it is not effiecient (O(n^2) time complexity), the data size is small enough for this sorting algorithim
+  // (its also the only sorting algorithm I have experience with)
   public static void sortThree(int[] userValues){
     int n = userValues.length; // store the length of the array as "n" for syntactic simplicity
         for(int i = 0; i < n - 1; i++){ // for every index of the array (0, 1, 2), (increment until out of array indexes)
