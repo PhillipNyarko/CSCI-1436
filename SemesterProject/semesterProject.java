@@ -1,38 +1,23 @@
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.concurrent.TimeUnit;
-
 class semesterProject{
-  /*
-  class TAdapter extends KeyAdapter{
-    @Override
-    public void keyPressed(KeyEvent e){
-      int keycode = e.getKeyCode();
-
-      // Java 12 switch expressions
-      switch (keycode){
-        case KeyEvent.VK_LEFT : tryMove(curPiece, curX - 1, curY);
-        case KeyEvent.VK_RIGHT : tryMove(curPiece, curX + 1, curY);
-        case KeyEvent.VK_SPACE : dropDown();
-        case KeyEvent.VK_ENTER : oneLineDown();
-      }
-    }
-  }*/ 
 
 	public static void main(String args[]){
     int gridRows = 6;
     int gridCols = 7;
 
-    String redChip = "\033[38;5;160m ✪ \033[0m";
-    String blueChip = "\033[38;5;21m ✪ \033[0m";
+		final String RED  = "\u001B[31m";
+		final String BLUE = "\u001B[34m";
+		final String ANSI_RESET = "\u001B[0m";
+		
+    String redChip =  RED + " ◍ " + ANSI_RESET;
+    String blueChip = BLUE + " ◍ " + ANSI_RESET;
 
 		String[][] gameBoard = new String[gridRows][gridCols]; 
     String[] selectionGrid = new String[gridCols];
 
-    initGrid(gameBoard, selectionGrid, redChip, blueChip);
-
-    String currentPlayer = redChip; // redChip starts as initial player
+    String currentPlayer = blueChip; // redChip starts as initial player
     int playerPosition = 0; // first players chip starts placed to the far left
+
+		initGrid(gameBoard, selectionGrid, currentPlayer);
 
 	  boolean running = true;
     while(running){
@@ -40,9 +25,11 @@ class semesterProject{
       if(user.press a || user.press left arrow){
         if(selectionGrid[playerPosition] != selectionGrid[0]){
           playerPosition -= 1;
+   				clearSelectionGrid(selectionGrid);
           selectionGrid[playerPosition] = currentPlayer;
         }else{
           playerPosition = selectionGrid.length - 1;
+					clearSelectionGrid(selectionGrid);
           selectionGrid[playerPosition] = currentPlayer;
         }
         update();
@@ -51,8 +38,10 @@ class semesterProject{
       if(user.press d || user.press right arrow){
         if(selectionGrid[playerPosition] != selectionGrid[].length - 1){
           playerPosition += 1;
+   				clearSelectionGrid(selectionGrid);
           selectionGrid[playerPosition] = currentPlayer;
         }else{
+					clearSelectionGrid(selectionGrid);
           playerPosition = selectionGrid[0];
           selectionGrid[playerPosition] = currentPlayer;
         }      
@@ -76,16 +65,14 @@ class semesterProject{
     clearScreen();
   }
 
-  public static void initGrid(String[][] gameBoard, String[] selectionGrid, String redChip, String blueChip){
+  public static void initGrid(String[][] gameBoard, String[] selectionGrid, String currrentPlayer){
     // fill the selection grid with empty space
-    for(int i = 0; i < selectionGrid.length; i++){
-      selectionGrid[i] = " ";
-    }
-    selectionGrid[0] = redChip; // first space holds the piece for player one
+   	clearSelectionGrid(selectionGrid);
+    selectionGrid[0] = currrentPlayer; // first space holds the piece for player one
 
     for(int i = 0; i < gameBoard[0].length; i++){
         for(int j = 0; j < gameBoard.length; j++){
-          gameBoard[j][i] = " ◌ "; // fill each index of the game board/2d array with an empty slot character
+					gameBoard[j][i] = " ◌ "; // fill each index of the game board/2d array with an empty slot character
         }
     }
     drawGrid(gameBoard, selectionGrid); // call the draw grid function to draw everything
@@ -107,20 +94,24 @@ class semesterProject{
     }
 
     // print the bottom barrier with title
-    System.out.print("|");
-    for(int i = 0; i < 7; i++){
-      System.out.print("~");
+		System.out.print(" ");
+    for(int i = 0; i < 5; i++){
+      System.out.print("≪");
     }
-    System.out.print("CNCT 4");
-    for(int i = 0; i < 6; i++){
-      System.out.print("~");
+    System.out.print("CONNECT 4");
+    for(int i = 0; i < 5; i++){
+      System.out.print("≫");
     }
-    System.out.print("|");
   }
 
 	public static void clearScreen(){
 		 System.out.print("\033[H\033[2J");  
   		 System.out.flush();
 	}
-}
 
+	public static void clearSelectionGrid(String[] selectionGrid){
+		for(int i = 0; i < selectionGrid.length; i++){
+			selectionGrid[i] = "   ";
+    }
+	}
+}
