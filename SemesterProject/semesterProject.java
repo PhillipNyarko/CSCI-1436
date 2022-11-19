@@ -21,42 +21,6 @@ class semesterProject{
 
 	  boolean running = true;
     while(running){
-      /*
-      if(user.press a || user.press left arrow){
-        if(selectionGrid[playerPosition] != selectionGrid[0]){
-          playerPosition -= 1;
-   				clearSelectionGrid(selectionGrid);
-          selectionGrid[playerPosition] = currentPlayer;
-        }else{
-          playerPosition = selectionGrid.length - 1;
-					clearSelectionGrid(selectionGrid);
-          selectionGrid[playerPosition] = currentPlayer;
-        }
-        update();
-      }
-
-      if(user.press d || user.press right arrow){
-        if(selectionGrid[playerPosition] != selectionGrid[].length - 1){
-          playerPosition += 1;
-   				clearSelectionGrid(selectionGrid);
-          selectionGrid[playerPosition] = currentPlayer;
-        }else{
-					clearSelectionGrid(selectionGrid);
-          playerPosition = selectionGrid[0];
-          selectionGrid[playerPosition] = currentPlayer;
-        }      
-        update();
-      }
-
-      if(user.press enter || user.press spacebar){
-        // place a piece in the lowest availible space in the columnn then switch players
-        if(currentPlayer = redChip){
-          currentPlayer = blueChip;
-        }else{
-          currentPlayer = redChip
-        }
-        update();
-      }*/ 
     }
 	}
 
@@ -104,9 +68,45 @@ class semesterProject{
     }
   }
 
+	public static void moveRight(string[] selectiongrid, string currentplayer, int playerposition){
+		if(selectionGrid[playerPosition] != selectionGrid[].length - 1){
+			playerPosition += 1;
+			clearSelectionGrid(selectionGrid);
+			selectionGrid[playerPosition] = currentPlayer;
+		}else{
+			clearSelectionGrid(selectionGrid);
+			playerPosition = selectionGrid[0];
+			selectionGrid[playerPosition] = currentPlayer;
+		}      
+		update();
+	}
+
+	public static void moveLeft(string[] selectiongrid, string currentplayer, int playerposition)){
+		if(selectionGrid[playerPosition] != selectionGrid[0]){
+			playerPosition -= 1;
+			clearSelectionGrid(selectionGrid);
+			selectionGrid[playerPosition] = currentPlayer;
+		}else{
+			playerPosition = selectionGrid.length - 1;
+			clearSelectionGrid(selectionGrid);
+			selectionGrid[playerPosition] = currentPlayer;
+		}
+		update();
+	}
+
+	public static void dropPiece(string currentplayer, int playerposition){
+		// place a piece in the lowest availible space in the columnn then switch players
+		if(currentPlayer = redChip){
+			currentPlayer = blueChip;
+		}else{
+			currentPlayer = redChip
+		}
+		update();
+	}
+	
 	public static void clearScreen(){
-		 System.out.print("\033[H\033[2J");  
-  		 System.out.flush();
+		System.out.print("\033[H\033[2J");  
+  	System.out.flush();
 	}
 
 	public static void clearSelectionGrid(String[] selectionGrid){
