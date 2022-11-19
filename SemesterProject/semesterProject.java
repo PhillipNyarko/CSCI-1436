@@ -1,48 +1,47 @@
 class semesterProject{
+    public static int gridRows = 6;
+    public static int gridCols = 7;
+
+		public static final String RED  = "\u001B[31m";
+		public static final String BLUE = "\u001B[34m";
+		public static final String ANSI_RESET = "\u001B[0m";
+		
+    public static String redChip =  RED + " ◍ " + ANSI_RESET;
+    public static String blueChip = BLUE + " ◍ " + ANSI_RESET;
+
+		public static String[][] gameBoard = new String[gridRows][gridCols]; 
+    public static String[] selectionGrid = new String[gridCols];
+
+    public static String currentPlayer = blueChip; // redChip starts as initial player
+    public static int playerPosition = 0; // first players chip starts placed to the far left
 
 	public static void main(String args[]){
-    int gridRows = 6;
-    int gridCols = 7;
-
-		final String RED  = "\u001B[31m";
-		final String BLUE = "\u001B[34m";
-		final String ANSI_RESET = "\u001B[0m";
-		
-    String redChip =  RED + " ◍ " + ANSI_RESET;
-    String blueChip = BLUE + " ◍ " + ANSI_RESET;
-
-		String[][] gameBoard = new String[gridRows][gridCols]; 
-    String[] selectionGrid = new String[gridCols];
-
-    String currentPlayer = blueChip; // redChip starts as initial player
-    int playerPosition = 0; // first players chip starts placed to the far left
-
-		initGrid(gameBoard, selectionGrid, currentPlayer);
+		initGrid();
 
 	  boolean running = true;
     while(running){
     }
 	}
 
-  public static void update(String[][] gameBoard, String[] selectionGrid){
-    drawGrid(gameBoard, selectionGrid); // call the draw grid function to draw everything
+  public static void update(){
+    drawGrid(); // call the draw grid function to draw everything
     clearScreen();
   }
 
-  public static void initGrid(String[][] gameBoard, String[] selectionGrid, String currrentPlayer){
+  public static void initGrid(){
     // fill the selection grid with empty space
-   	clearSelectionGrid(selectionGrid);
-    selectionGrid[0] = currrentPlayer; // first space holds the piece for player one
+   	clearSelectionGrid();
+    selectionGrid[0] = currentPlayer; // first space holds the piece for player one
 
     for(int i = 0; i < gameBoard[0].length; i++){
         for(int j = 0; j < gameBoard.length; j++){
 					gameBoard[j][i] = " ◌ "; // fill each index of the game board/2d array with an empty slot character
         }
     }
-    drawGrid(gameBoard, selectionGrid); // call the draw grid function to draw everything
+    drawGrid(); // call the draw grid function to draw everything
   }
   
-  public static void drawGrid(String[][] gameBoard, String[] selectionGrid){
+  public static void drawGrid(){
     //print the selection row 
     for(int i = 0; i < selectionGrid.length; i++){
       System.out.print(selectionGrid[i]); // print the value of each element of the row
@@ -68,40 +67,37 @@ class semesterProject{
     }
   }
 
-	public static void moveRight(string[] selectiongrid, string currentplayer, int playerposition){
-		if(selectionGrid[playerPosition] != selectionGrid[].length - 1){
+	public static void moveRight(){
+		if(playerPosition != selectionGrid.length - 1){
 			playerPosition += 1;
-			clearSelectionGrid(selectionGrid);
+			clearSelectionGrid();
 			selectionGrid[playerPosition] = currentPlayer;
 		}else{
-			clearSelectionGrid(selectionGrid);
-			playerPosition = selectionGrid[0];
+			clearSelectionGrid();
+			playerPosition = 0;
 			selectionGrid[playerPosition] = currentPlayer;
 		}      
-		update();
 	}
 
-	public static void moveLeft(string[] selectiongrid, string currentplayer, int playerposition)){
-		if(selectionGrid[playerPosition] != selectionGrid[0]){
+	public static void moveLeft(){
+		if(playerPosition != 0){
 			playerPosition -= 1;
-			clearSelectionGrid(selectionGrid);
+			clearSelectionGrid();
 			selectionGrid[playerPosition] = currentPlayer;
 		}else{
 			playerPosition = selectionGrid.length - 1;
-			clearSelectionGrid(selectionGrid);
+			clearSelectionGrid();
 			selectionGrid[playerPosition] = currentPlayer;
 		}
-		update();
 	}
 
-	public static void dropPiece(string currentplayer, int playerposition){
+	public static void dropPiece(){
 		// place a piece in the lowest availible space in the columnn then switch players
-		if(currentPlayer = redChip){
+		if(currentPlayer == redChip){
 			currentPlayer = blueChip;
 		}else{
-			currentPlayer = redChip
+			currentPlayer = redChip;
 		}
-		update();
 	}
 	
 	public static void clearScreen(){
@@ -109,7 +105,7 @@ class semesterProject{
   	System.out.flush();
 	}
 
-	public static void clearSelectionGrid(String[] selectionGrid){
+	public static void clearSelectionGrid(){
 		for(int i = 0; i < selectionGrid.length; i++){
 			selectionGrid[i] = "   ";
     }
