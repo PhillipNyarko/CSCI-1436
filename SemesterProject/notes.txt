@@ -1,6 +1,0 @@
-________Connect four_________
-
-a n*n-1 grid that allows two players to take turns placing pieces with both the arrow keys, vim bindings, or "WASD"
-
-if either player places four of their pieces in an uninterrupted row, they win and a winnning animation is played.
-then the board is cleared
