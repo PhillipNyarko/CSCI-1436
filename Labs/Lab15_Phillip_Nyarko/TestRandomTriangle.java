@@ -1,12 +1,18 @@
 class TestRandomTriangle{
   public static void main(String args[]){
 
+    char[] symbols = new char[] {'!', '@', '#', '$', '%', '+', 'Z', '?', '<', '/', '|'};
+
     Triangle t = new Triangle();
 
     while(true){
       t.drawTriangle();
-      sleep(3);
+      sleep(1);
       clearScreen();
+      t.setSymbol(symbols[(int)(Math.random()*symbols.length - 1)]);
+      t.setRows((int)(Math.random()*10) + 3);
+      int[] position = new int[] {(int)(Math.random()*20), (int)(Math.random()*20)};
+      t.setPosition(position);
     }
   }
 
