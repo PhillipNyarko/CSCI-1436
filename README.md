@@ -1,0 +1,1 @@
+This repository is a collection of labs and exercises completed during my programming fundamentals class. The final project for this class can be found here: https://github.com/PhillipNyarko/Connect-4
